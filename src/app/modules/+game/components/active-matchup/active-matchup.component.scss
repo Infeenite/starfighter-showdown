@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+@import 'material-theme.scss';
+
+:host {
+    $accent: map-get($sw-theme, accent);
+
+    mat-toolbar {
+        justify-content: center;
+        h1 {
+            text-align: center;
+        }
+    }
+
+    main.matchup {
+        padding: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+
+    button {
+        display: block;
+        margin: auto;
+    }
+
+}

@@ -21,7 +21,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "tsconfig.json",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -29,6 +29,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/theme"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -96,7 +101,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
+              "tsconfig.json",
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],

@@ -1,0 +1,31 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+
+    header {
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            margin: auto;
+        }
+    }
+
+    div.image-container {
+        margin: 16px;
+        display: flex;
+        justify-content: center;
+
+        img {
+            border-radius: 8px;
+        }
+    }
+ 
+    
+}

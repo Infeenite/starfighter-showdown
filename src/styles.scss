@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import 'assets/theme/material-theme.scss';
+
+h1, h2, h3, h4, h5, h6, p, span {
+    font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+html, body, app-root, .app-frame {
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+    color: #e0e0e0;
+}

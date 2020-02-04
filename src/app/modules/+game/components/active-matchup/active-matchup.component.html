@@ -1,0 +1,22 @@
+<mat-toolbar color="accent" class="mat-elevation-z2">
+    <h1 *ngIf="!matchup?.playerOnePick">Waiting for Player 1</h1>
+    <h1 *ngIf="matchup?.playerOnePick && !matchup?.playerTwoPick">Waiting for Player 2</h1>
+    <h1 *ngIf="matchup?.winner">Armor up!</h1>
+</mat-toolbar>
+
+<main class="matchup">
+    <app-starfighter-card [content]="matchup?.playerOnePick" [labelIfEmpty]="'No starfighter selected'">
+    </app-starfighter-card>
+    <app-winner-wheel *ngIf="!!matchup?.winner" [winner]="matchup?.winner"></app-winner-wheel>
+    <app-starfighter-card [content]="matchup?.playerTwoPick" [labelIfEmpty]="'No starfighter selected'">
+    </app-starfighter-card>
+</main>
+
+<button mat-flat-button 
+        color="accent" 
+        [disabled]="!matchup?.winner" 
+        (click)="nextRound.emit()">
+        Next Round
+</button>
+
+

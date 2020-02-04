@@ -1,0 +1,18 @@
+
+    <mat-toolbar class="mat-elevation-z2">
+        <h1>{{ label }}</h1>
+    </mat-toolbar>
+    <div *ngIf="!!starfighters; else preparation" class="card-deck">
+        <app-starfighter-card *ngFor="let sf of starfighters" [content]="sf" (click)="selectCard.emit(sf)">
+
+        </app-starfighter-card>
+    </div>
+    <ng-template #errorMessage #preparation>
+        <div *ngIf="!error; else errorMessage" class="loading">
+            <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+            <h1>Fetching Data</h1>
+        </div>
+        <ng-template #errorMessage>
+            API Error occured.
+        </ng-template>
+    </ng-template>

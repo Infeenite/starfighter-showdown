@@ -1,0 +1,44 @@
+@import '~@angular/material/theming';
+@import 'material-theme.scss';
+
+:host {
+    $accent: map-get($sw-theme, accent);
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 16px;
+
+        h1 {
+            color: mat-color($accent)
+        }
+
+        img {
+            width: 237px;
+            height: 130px;
+        }
+    }
+
+    main {
+        min-width: 200px;
+        max-width: 800px;
+        margin: auto;
+        
+        mat-card {
+            padding: 16px;
+            font-size: 16px;
+            line-height: 28px;
+
+            mat-card-footer {
+                padding: 16px;
+                color: mat-color($accent)
+            }
+        }
+
+        button {
+            display: block;
+            margin: 16px auto;
+        }
+    }
+}

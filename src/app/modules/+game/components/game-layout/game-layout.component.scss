@@ -1,0 +1,58 @@
+@import '~@angular/material/theming';
+@import 'material-theme.scss';
+
+:host {
+    $primary: map-get($sw-theme, primary);
+    $accent: map-get($sw-theme, accent);
+    $warn: map-get($sw-theme, warn);
+
+    ::ng-deep mat-sidenav-container {
+
+        mat-sidenav-content {
+            background-image: url('/assets/images/bg.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+
+        mat-toolbar {
+            span.spacing {
+                flex: 1 1 auto;
+            }
+
+            span.score-divider {
+                height: 100%;
+                width: 32px;
+                margin: auto 24px;
+                display: inline-flex;
+                justify-content: space-between;
+                &:after, &:before {
+                    content: '';
+ 
+                    width: 8px;
+                   
+                    height: 100%;
+                    background: mat-color($accent);
+                }
+                &.sd1::before, &.sd1::after{
+                    transform: matrix(1, 0, 0.21, 1, 0, 0);
+                }
+                &.sd2::before, &.sd2::after{
+                    transform: matrix(1, 0, -0.21, 1, 0, 0);
+                }
+            }
+
+            mat-icon {
+                margin: auto 4px;
+                color: mat-color($warn);
+            }
+        }
+
+        mat-sidenav {
+            width: 480px;
+        }
+
+    }
+    
+    
+    
+}

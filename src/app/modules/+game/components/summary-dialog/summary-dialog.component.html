@@ -1,0 +1,28 @@
+<h1>Summary</h1>
+
+<mat-table [dataSource]="data.matchups">
+
+    <ng-container matColumnDef="playerOnePick">
+      <mat-header-cell *matHeaderCellDef> Player One </mat-header-cell>
+      <mat-cell *matCellDef="let matchup"> {{ matchup.playerOnePick.name }} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="playerTwoPick">
+      <mat-header-cell *matHeaderCellDef> Player Two </mat-header-cell>
+      <mat-cell *matCellDef="let matchup"> {{ matchup.playerTwoPick.name }} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="winner">
+      <mat-header-cell *matHeaderCellDef> Winner </mat-header-cell>
+      <mat-cell *matCellDef="let matchup"> {{ matchup.winner === 3 && 'Draw' || 'Player ' + matchup.winner}}  </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <button matDialogClose mat-button [routerLink]="['../intro']">
+      Restart the game
+  </button>

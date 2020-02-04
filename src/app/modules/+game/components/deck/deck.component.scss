@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+@import 'material-theme.scss';
+
+:host {
+    $primary: map-get($sw-theme, primary);
+    $accent: map-get($sw-theme, accent);
+
+    mat-toolbar {
+        position: absolute;
+        z-index: 12;
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            color: mat-color($accent);
+            margin: 12px;
+        }
+    }
+
+
+
+    div.card-deck {
+        margin-top: 80px;
+    }
+
+    div.loading {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            color: mat-color($accent);
+            margin-top: 8px;
+        }
+    }
+}

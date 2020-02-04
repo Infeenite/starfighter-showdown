@@ -1,0 +1,20 @@
+<mat-card class="mat-elevation-z2" matRipple>
+
+    <ng-container *ngIf="!!content; else noContent">
+        <mat-card-header>
+            <mat-card-title>{{ content?.name }}</mat-card-title>
+            <mat-card-subtitle>{{ content?.manufacturer }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-list>
+            <mat-list-item>Crew: {{ content?.crew }}</mat-list-item>
+            <mat-list-item>Hyperdrive Rating: {{ content?.hyperdrive_rating }}</mat-list-item>
+            <mat-list-item>Speed: {{ content?.MGLT }} MGLT</mat-list-item>
+        </mat-list>
+    </ng-container>
+
+    <ng-template #noContent>
+        {{ labelIfEmpty }}
+    </ng-template>
+
+
+</mat-card>

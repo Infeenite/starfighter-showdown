@@ -1,0 +1,14 @@
+<div class="wheel">
+    <mat-icon 
+        [@winner]="winner"
+    >arrow_forward</mat-icon>
+</div>
+
+<h1 @verdict>
+    <ng-container *ngIf="winner === PlayerEnum.Draw; else isWinner">
+        Draw!
+    </ng-container>
+    <ng-template #isWinner>
+        Winner!
+    </ng-template>
+</h1>
