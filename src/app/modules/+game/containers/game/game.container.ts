@@ -111,11 +111,11 @@ export class GameContainerComponent implements OnInit {
     private calculatePower({MGLT, crew, length}: Starfighter): number {
         const shipMGLT = this.alwaysAsNumber(MGLT);
         const shipCrew = this.alwaysAsNumber(crew);
-        const shipLength = this.alwaysAsNumber(length, 1000); // Giving ship a length of 1 if unknown would give it too much advantage
+        const shipLength = this.alwaysAsNumber(length);
         return Math.floor((shipMGLT * shipCrew) / shipLength);
     }
 
-    private alwaysAsNumber(value: any, valueIfNaN = 1) {
+    private alwaysAsNumber(value: any, valueIfNaN = Math.floor(Math.random() * 100 + 1)) {
         return !isNaN(parseFloat(value)) && parseFloat(value) || valueIfNaN;
     }
 }

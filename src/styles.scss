@@ -19,3 +19,8 @@ html, body, app-root, .app-frame {
     box-sizing: border-box;
     color: #e0e0e0;
 }
+
+app-root {
+    display: block;
+    width: 100%;
+}
