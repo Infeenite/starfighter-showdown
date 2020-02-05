@@ -1,15 +1,15 @@
 <header>
-    <img src="assets/images/logo.png">
+    <img src="assets/images/logo.png" alt="Star Wars">
     <h1>Starfighter Showdown</h1>
 </header>
 
 <main>
     <h1>Rules</h1>
-    <mat-card class="mat-elevation-z5">There are two players, and a deck of cards representing some of the Starfighters from a galaxy far far away.
+    <mat-card class="mat-elevation-z5" id="cy-rules">There are two players, and a deck of cards representing some of the Starfighters from a galaxy far far away.
        You can compare them to see which one would win depending on their stats. You play 5 matchups total. The person who won more duels, wins the match.
        After the game, summary will be displayed.
 
        <mat-card-footer>Let the force be with you.</mat-card-footer>
     </mat-card>
-    <button mat-raised-button color="accent" [routerLink]="['../game']">Go!</button>
+    <button mat-raised-button color="accent" id="cy-begin" [routerLink]="['../game']">Go!</button>
 </main>

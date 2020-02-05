@@ -2,7 +2,7 @@
     <mat-toolbar class="mat-elevation-z2">
         <h1>{{ label }}</h1>
     </mat-toolbar>
-    <div *ngIf="!!starfighters; else preparation" class="card-deck">
+    <div *ngIf="!!starfighters; else preparation" class="card-deck" id="cy-deck">
         <app-starfighter-card *ngFor="let sf of starfighters" [content]="sf" (click)="selectCard.emit(sf)">
 
         </app-starfighter-card>
