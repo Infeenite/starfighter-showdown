@@ -7,12 +7,12 @@
     
             <!-- Player 1 Points-->
             <span class="score-divider sd1"></span>
-            <mat-icon *ngFor="let point of playerOnePoints">check_circle</mat-icon>
+            <mat-icon *ngFor="let point of playerOnePoints; let i = index" [attr.id]="'test-player-one-point-' + i">check_circle</mat-icon>
     
             <span class="spacing"></span>
     
             <!-- Player 2 Points-->
-            <mat-icon *ngFor="let point of playerTwoPoints">check_circle</mat-icon>
+            <mat-icon *ngFor="let point of playerTwoPoints; let i = index" [attr.id]="'test-player-two-point-' + i">check_circle</mat-icon>
             <span class="score-divider sd2"></span>
     
             <span>
@@ -21,12 +21,12 @@
     
         </mat-toolbar>
 
-        <app-active-matchup [matchup]="matchups[round -1]" (nextRound)="onNextRound(sidenav)"></app-active-matchup>
+        <app-active-matchup [matchup]="matchups[round -1]" (nextRound)="onNextRound()"></app-active-matchup>
         <mat-sidenav #sidenav opened mode="side">
                 <app-deck [label]="'Player ' + turn + ' selection'" 
                 [error]="!!error"
                 [starfighters]="!!(turn === Turn.PlayerOne) ?(playerOneStarfighters$ | async) : (playerTwoStarfighters$ | async)" 
-                (selectCard)="onCardSelected(turn, $event, sidenav)">
+                (selectCard)="onCardSelected(turn, $event)">
                 </app-deck>
         </mat-sidenav>
     </mat-sidenav-container>

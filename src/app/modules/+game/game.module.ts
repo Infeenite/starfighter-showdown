@@ -25,32 +25,40 @@ import { WinnerWheelComponent } from './components/winner-wheel/winner-wheel.com
 import { SummaryDialogComponent } from './components/summary-dialog/summary-dialog.component';
 
 
+export const gameModules = [
+    CommonModule,
+    GameRoutingModule,
+    HttpClientModule,
+
+    // Material Modules
+    MatButtonModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatRippleModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatTableModule
+];
+
+export const gameComponents = [
+    GameContainerComponent,
+    GameLayoutComponent,
+    DeckComponent,
+    ActiveMatchupComponent,
+    StarfighterCardComponent,
+    WinnerWheelComponent,
+    SummaryDialogComponent
+];
+
 @NgModule({
     imports: [
-        CommonModule,
-        GameRoutingModule,
-        HttpClientModule,
-
-        // Material Modules
-        MatButtonModule,
-        MatToolbarModule,
-        MatCardModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatListModule,
-        MatRippleModule,
-        MatProgressSpinnerModule,
-        MatDialogModule,
-        MatTableModule
+        ...gameModules
     ],
     declarations: [
-        GameContainerComponent,
-        GameLayoutComponent,
-        DeckComponent,
-        ActiveMatchupComponent,
-        StarfighterCardComponent,
-        WinnerWheelComponent,
-        SummaryDialogComponent
+        ...gameComponents
     ],
     entryComponents: [
         SummaryDialogComponent

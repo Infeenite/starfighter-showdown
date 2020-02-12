@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable, EMPTY} from 'rxjs';
 import { StarfightersService } from '../../services/starfighters/starfighters.service';
 import { Starfighter } from '../../models/starfighter';
@@ -17,6 +17,8 @@ import { catchError } from 'rxjs/operators';
 
 export class GameContainerComponent implements OnInit {
     constructor(private starfightersService: StarfightersService, private dialog: MatDialog) { }
+
+    @ViewChild('sidenav', {static: false}) sidenavRef: MatSidenav;
 
     playerOneStarfighters$: Observable<Starfighter[]>;
     playerTwoStarfighters$: Observable<Starfighter[]>;
@@ -50,27 +52,27 @@ export class GameContainerComponent implements OnInit {
                                         }));
     }
 
-    onCardSelected(turn: Player, card: Starfighter, sidenav: MatSidenav): void {
-        sidenav.close().then(() => {
+    onCardSelected(turn: Player, card: Starfighter): void {
+        this.sidenavRef.close().then(() => {
             switch (turn) {
                 case Player.PlayerOne:
 
                     this.turn = Player.PlayerTwo;
                     this.matchups.push({playerOnePick: card});
-                    sidenav.open();
+                    this.sidenavRef.open();
 
                     break;
                 case Player.PlayerTwo:
                     const matchup = this.matchups[this.round - 1];
                     matchup.playerTwoPick = card;
-                    matchup.winner = this.compareCards(matchup);
+                    matchup.winner = this.pickWinner(matchup);
                     break;
             }
         });
 
     }
 
-    onNextRound(sidenav: MatSidenav) {
+    onNextRound() {
         this.turn = Player.PlayerOne;
         this.recalculatePoints();
         this.round++;
@@ -82,9 +84,17 @@ export class GameContainerComponent implements OnInit {
                  disableClose: true
               });
         } else {
-            sidenav.open();
+            this.sidenavRef.open();
         }
 
+    }
+
+
+    pickWinner({playerOnePick, playerTwoPick}: Matchup) {
+        const powerOne = this.calculatePower(playerOnePick);
+        const powerTwo = this.calculatePower(playerTwoPick);
+        return !!(powerOne === powerTwo) && Player.Draw
+               || (powerOne > powerTwo && Player.PlayerOne || Player.PlayerTwo);
     }
 
     private recalculatePoints() {
@@ -101,12 +111,6 @@ export class GameContainerComponent implements OnInit {
         this.playerTwoPoints = Array(playerTwoPoints).fill(1);
     }
 
-    private compareCards({playerOnePick, playerTwoPick}: Matchup) {
-        const powerOne = this.calculatePower(playerOnePick);
-        const powerTwo = this.calculatePower(playerTwoPick);
-        return !!(powerOne === powerTwo) && Player.Draw
-               || (powerOne > powerTwo && Player.PlayerOne || Player.PlayerTwo);
-    }
 
     private calculatePower({MGLT, crew, length}: Starfighter): number {
         const shipMGLT = this.alwaysAsNumber(MGLT);

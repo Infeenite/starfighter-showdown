@@ -14,7 +14,7 @@ export interface Starfighter {
     starship_class: string;
     pilots: string[];
     films: string[];
-    created: Date;
-    edited: Date;
+    created: string;
+    edited: string;
     url: string;
 }
